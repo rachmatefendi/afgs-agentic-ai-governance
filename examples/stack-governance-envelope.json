@@ -1,0 +1,28 @@
+{
+  "stack_request_id": "req_20260810_001",
+  "workstream_id": "ws_acq_01",
+  "decision_id": "dec_0099",
+  "state_version": 14,
+  "objective": "Issue binding asset-purchase offer",
+  "requested_action": "issue_binding_commitment",
+  "business_state_ref": "afos://state/ws_acq_01/v14",
+  "runtime_state_ref": "easgf://runtime/session_8821/v7",
+  "governance_state_ref": "mdgr://decision/dec_0099/v2",
+  "materiality": {
+    "provisional_level": "MATERIAL",
+    "extraction_status": "complete",
+    "trigger_basis": [
+      "capital_exposure",
+      "binding_legal_effect"
+    ]
+  },
+  "policy_snapshot_ref": "pcr://snapshot/pol_2026_q3.v1",
+  "authority_requirement_refs": [
+    "iar://requirement/capital_committee"
+  ],
+  "evidence_refs": [
+    "eps://evidence/valuation_report_v2"
+  ],
+  "source_mode": "CLOSED_BOOK",
+  "requested_mdgr_action": "evaluate"
+}

@@ -1,0 +1,14 @@
+{
+  "event_id": "evt_0099_revocation_01",
+  "timestamp": "2026-08-10T16:32:10+07:00",
+  "workstream_id": "ws_acq_01",
+  "decision_id": "dec_0099",
+  "event_type": "EXECUTION_TOKEN_REVOKED",
+  "actor_ref": "iar://actor/risk_officer_02",
+  "origin_system": "mdgr-control-plane",
+  "previous_state_ref": "sub://state/v16",
+  "new_state_ref": "sub://state/v17",
+  "trigger_ref": "evt_counterparty_alert_01",
+  "policy_snapshot_ref": "pcr://snapshot/pol_2026_q3.v1",
+  "reason_code": "COUNTERPARTY_DEFAULT_ALERT"
+}

@@ -1,0 +1,13 @@
+{
+  "error_id": "err_20260810_007",
+  "request_id": "req_20260810_001",
+  "timestamp": "2026-08-10T08:31:05+07:00",
+  "error_class": "SUBSTRATE_TIMEOUT",
+  "component": "IAR",
+  "retryable": true,
+  "state_mutation_committed": false,
+  "execution_allowed": false,
+  "fallback_mode": "ADVISORY_READ_ONLY",
+  "next_action": "RETRY_OR_HOLD",
+  "audit_event_required": true
+}

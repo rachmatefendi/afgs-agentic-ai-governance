@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "Please cite the AFGS v1.0 paper below. This repository distributes the paper and non-normative documentation, not a verified canonical baseline or software runtime."
+title: "AI Founder Governance Stack (AFGS): Paper and Documentation"
+version: "1.0"
+authors:
+  - family-names: "Efendi"
+    given-names: "Rachmat"
+preferred-citation:
+  type: generic
+  title: "The AI Founder Governance Stack: A Three-Pillar Architecture for Fail-Closed Governance of Autonomous AI Operations"
+  authors:
+    - family-names: "Efendi"
+      given-names: "Rachmat"
+  year: 2026
+  month: 8
+  version: "1.0"
+  notes: "Normative architecture paper; not an empirical evaluation or a claim of implemented SC2/SC3 enforcement."

@@ -1,0 +1,21 @@
+{
+  "override_id": "ovr_0099_01",
+  "decision_id": "dec_0099",
+  "prior_verdict_id": "vrd_0099_v3",
+  "override_class": "POLICY_EXCEPTION",
+  "actor_refs": [
+    "iar://actor/board_member_01",
+    "iar://actor/risk_officer_02"
+  ],
+  "authority_refs": [
+    "iar://authority/break_glass_material"
+  ],
+  "justification_ref": "eps://evidence/override_memo_0099",
+  "scope": "specific_action_only",
+  "effective_from": "2026-08-10T17:00:00+07:00",
+  "expires_at": "2026-08-10T17:30:00+07:00",
+  "retrospective_review_required": true,
+  "retrospective_review_ref": null,
+  "status": "AUTHORIZED",
+  "new_verdict_required": true
+}

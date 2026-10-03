@@ -1,0 +1,142 @@
+{
+  "name": "AI Founder Governance Stack (AFGS)",
+  "version": "1.0",
+  "distribution_type": "publication_paper_and_non_normative_companion_documentation",
+  "canonical_normative_artifact": {
+    "name": "AFGS_v1.0_Frozen_Normative_Baseline.docx",
+    "declared_sha256": "cce49a17697e91aefa409c28c6650d79aeca1dba3cb01deea4838abbf72d32a6",
+    "identity_source": "Publication paper cover",
+    "bytes_included": false,
+    "declared_hash_verified": false
+  },
+  "publication_paper": {
+    "path": "paper/AFGS-v1.0.pdf",
+    "version": "1.0",
+    "pages": 14,
+    "sha256": "66127d324a95966ea130e974381004320825a6a7aacc2a7d04ffa1135f014f35",
+    "size_bytes": 136286,
+    "content_transform": "none; original PDF bytes preserved",
+    "license": "CC-BY-ND-4.0"
+  },
+  "source_text_representation": {
+    "source_title": "AFGS v1.0 Frozen Normative Baseline",
+    "representation": "retrieved text of a 33-page specification",
+    "source_pages": 33,
+    "complete_transcript_included": false,
+    "source_transcript_sha256": "02317e0b89c6fa76039eb1bfac508d33413dbbfcce94c6136f6cdc5bb0ee1e7d",
+    "canonical_byte_equivalence": "NOT_VERIFIED"
+  },
+  "technical_source_excerpts": {
+    "path": "provenance/AFGS-v1.0-source-excerpts.txt",
+    "version": "1.0",
+    "sha256": "52e918420ea4399d0a4b0ff29dbacf30517555986bac8e5e3a3fdb6375982d9c",
+    "representation": "selected technical source passages; not a complete transcript or authenticated canonical copy",
+    "selection": [
+      {
+        "source_section": "1–18",
+        "source_pages": [
+          4,
+          24
+        ],
+        "scope": "section text"
+      },
+      {
+        "source_section": "19.3",
+        "source_pages": [
+          25,
+          25
+        ],
+        "scope": "controlled amendment procedure"
+      },
+      {
+        "source_section": "20.4",
+        "source_pages": [
+          27,
+          27
+        ],
+        "scope": "selected limitation/consequence passages and organizational-taxonomy implementation requirement"
+      },
+      {
+        "source_section": "21",
+        "source_pages": [
+          28,
+          28
+        ],
+        "scope": "implementation steps 1–7"
+      },
+      {
+        "source_section": "Appendix A",
+        "source_pages": [
+          29,
+          29
+        ],
+        "scope": "minimum contract set and reference URI schemes"
+      }
+    ],
+    "layout_transform": "running page headers removed; source page labels retained; line wrapping and flattened tables otherwise retained",
+    "authority": "non-normative reference",
+    "license_grant": "none additional"
+  },
+  "companion_documents": {
+    "authority": "non-normative source-derived references",
+    "source_version": "1.0",
+    "invariants": "GS-I1–GS-I12",
+    "threats": "T01–T15",
+    "execution_predicate_terms": 9,
+    "execution_terminology": [
+      "GEG",
+      "PECG",
+      "PESR"
+    ],
+    "license_grant": "none additional"
+  },
+  "illustrative_json_examples": [
+    {
+      "path": "examples/stack-governance-envelope.json",
+      "source_section": "§9.1",
+      "sha256": "2dcaa31e35faab3d1d88d559dfd69aeb096a5e4232464a01621744b244c00f86",
+      "role": "illustrative_source_object_not_schema_or_live_authorization"
+    },
+    {
+      "path": "examples/mdgr-verdict.json",
+      "source_section": "§9.2",
+      "sha256": "f31673416c84f9f252a5b722a7e9b1f93c4d22b7b7ab71259f205319ded89f55",
+      "role": "illustrative_source_object_not_schema_or_live_authorization"
+    },
+    {
+      "path": "examples/error-timeout-envelope.json",
+      "source_section": "§9.3",
+      "sha256": "e69c6bcd0d134fca35770a938995fe3efc00c93daf95de1c82d766c9db4ff93e",
+      "role": "illustrative_source_object_not_schema_or_live_authorization"
+    },
+    {
+      "path": "examples/execution-token.json",
+      "source_section": "§11.4",
+      "sha256": "b553b885cf92fa77c55e177b1107c8ea0f6c7f1e412269b124f8a5406738fcc9",
+      "role": "illustrative_source_object_not_schema_or_live_authorization"
+    },
+    {
+      "path": "examples/human-override.json",
+      "source_section": "§12.3",
+      "sha256": "ffd08eb3a905532d963461d469688b8a04fdc5e686b3fd3610be20cd1d94f90b",
+      "role": "illustrative_source_object_not_schema_or_live_authorization"
+    },
+    {
+      "path": "examples/shared-event.json",
+      "source_section": "§13",
+      "sha256": "4111fe02816d65612b6792ca76c7dd5b50a7a723b324321f6e01ce316666d091",
+      "role": "illustrative_source_object_not_schema_or_live_authorization"
+    }
+  ],
+  "availability": {
+    "formal_schemas_supplied": false,
+    "conformance_test_suite_supplied": false,
+    "reference_runtime_supplied": false,
+    "current_source_claim": "SC0 / SC1-capable",
+    "sc1_deployment_conformance_demonstrated": false,
+    "sc2_sc3_enforcement_demonstrated": false,
+    "empirical_effectiveness_demonstrated": false,
+    "external_certification_established": false,
+    "independent_human_peer_review_established": false
+  }
+}

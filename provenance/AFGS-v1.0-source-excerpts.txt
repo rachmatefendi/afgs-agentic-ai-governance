@@ -1,0 +1,988 @@
+AFGS v1.0 — Technical source excerpts
+
+Author: Rachmat Efendi
+Source: AFGS v1.0 Frozen Normative Baseline, retrieved text of a 33-page document.
+Representation: selected source passages, not the complete transcript.
+Authority: non-normative reference; not an authenticated canonical copy.
+
+Included: sections 1–18; subsection 19.3; selected passages from subsection 20.4;
+section 21 implementation steps 1–7; Appendix A. Source numbering is retained.
+Running page headers are removed; page labels refer to the 33-page source.
+Line wrapping and flattened table extraction are otherwise retained.
+Only the identified passages are reproduced. These selections do not amend the source.
+
+The original canonical DOCX is not included and its declared SHA-256 has not
+been verified. This file has a separate identity; see manifest.json and README.md.
+
+
+[Source page 4 of 33]
+1. Canonical Definition, Scope & Terminology
+1.1 Canonical Definition
+AFGS is a normative integration and conformance specification defining how a business operating 
+architecture, an enterprise AI governance control plane, and a material decision governance runtime 
+[Source page 5 of 33]
+interoperate as one governed system.
+CANONICAL DEFINITION. AI Founder Governance Stack is a three-pillar architecture composed of AI 
+Founder OS, EASGF, and MDGR, bound by a shared integration, state, authority, evidence, execution, and 
+assurance substrate.
+1.2 Expanded Terminology
+Term Expanded form Meaning
+AFGS AI Founder Governance Stack The integrated three-pillar governance architecture.
+AI Founder 
+OS
+AI Founder Operating System Business operating/application architecture.
+EASGF Enterprise AI Skill Governance 
+Framework
+AI governance and runtime control plane.
+MDGR Material Decision Governance 
+Runtime
+High-stakes material decision governance runtime.
+IAR Identity & Authority Registry Canonical identity, role, delegation, and authority 
+source.
+EPS Evidence & Provenance Service Canonical evidence, provenance, freshness, and 
+integrity service.
+PCR Policy & Constraint Registry Versioned policy and constraint source.
+GEG Governed Execution Gateway Controlled egress enforcement boundary for 
+consequential actions.
+DMI Deterministic Materiality 
+Interceptor
+Deterministic policy evaluator operating on structured
+materiality inputs.
+PECG Pre-Execution Consistency Guard Execution-side enforcement boundary before external
+mutation.
+PESR Pre-Execution State Revalidation Logical state/policy/authority revalidation step inside 
+PECG.
+LKG Last-Known-Good snapshot Signed or pinned bounded-freshness snapshot used 
+only under defined degraded-mode policy.
+1.3 Applicability Boundary
+▪ Material capital allocation and third-party capital decisions.
+▪ Binding legal commitments, corporate actions, and governance approvals.
+▪ High-impact procurement, regulated operations, critical security actions, and consequential system 
+[Source page 6 of 33]
+mutations.
+▪ AI-supported business execution where authority, evidence, policy, or survivability can materially 
+affect outcomes.
+1.4 Non-Goals
+▪ Not a monolithic agent or mega-prompt.
+▪ Not a universal autonomous execution system.
+▪ Not a substitute for legal, fiduciary, engineering, regulatory, or licensed human responsibility.
+▪ Not a claim that model reasoning is correct, safe, deterministic, or sufficient for execution.
+▪ Not a certification regime; certification is a separate future assurance process if established.
+1.5 Normative Language
+NORMATIVE LANGUAGE. MUST / MUST NOT / SHALL = mandatory. SHOULD = recommended default. MAY 
+= optional when justified and auditable. Examples and proposed benchmark thresholds are non-universal 
+unless explicitly marked normative.
+2. Architectural Thesis & Jurisdiction
+Pillar Primary question Authoritative for MUST NOT own
+AI Founder OS What should the 
+organization work on, 
+decide, execute, monitor,
+or stop?
+Objective; workstream; business 
+lifecycle; operating mode; 
+opportunity/portfolio state; 
+business decision record; KPI 
+and intervention state.
+Tool/source authorization; 
+MDGR verdict; execution 
+authority.
+EASGF How may AI capabilities, 
+models, tools, sources, 
+and skills be used?
+Source mode; skill/capability 
+activation; tool authorization; 
+context; model routing; AI 
+validation; runtime observability.
+Capital approval; 
+organizational authority; 
+conversion of HOLD/BLOCK
+to execution permission.
+MDGR May this material 
+decision become an 
+authorized and 
+executable outcome?
+Material decision eligibility; 
+governance phase; authority 
+sufficiency; binding constraints; 
+survivability; verdict; token 
+eligibility.
+Business strategy; 
+specialist execution; 
+authority creation.
+SEPARATION PRINCIPLE. Skill Activation ≠ Tool Authorization ≠ Source Authorization ≠ Decision Approval ≠ 
+[Source page 7 of 33]
+Pillar Primary question Authoritative for MUST NOT own
+Human Authority ≠ Execution Permission.
+3. Reference Architecture & Shared Governance Substrate
+HUMAN / ORGANIZATION
+ |
+ v
++-----------------------+
+| AI FOUNDER OS | Business operating state
++-----------+-----------+
+ |
+ v
++-----------------------+
+| EASGF | AI governance / control plane
++-----------+-----------+
+ |
+ +--> Materiality Extraction --> DMI
+ | | |
+ | non-material material/unknown
+ | | v
+ | | +-------------+
+ | | | MDGR |
+ | | +------+------+
+ | | |
+ | v v
+ | Normal path HUMAN GATE (if required)
+ | | |
+ | v v
+ | +--------------------+
+ +-->| GEG / PECG / PESR |
+ +---------+----------+
+ v
+ CONTROLLED EGRESS
+ALL PILLARS BIND TO SHARED SUBSTRATE:
+State · IAR · EPS · PCR · Event Stream · Audit · Assurance
+3.1 Shared Substrate Services
+1. Integration & State Services — state references, event routing, versioning, and workstream isolation.
+2. Identity & Authority Registry (IAR) — authenticated roles, delegated limits, separation of duties, 
+vetoes, and expiry.
+3. Evidence & Provenance Service (EPS) — evidence identifiers, hashes, versions, freshness, authority 
+level, and derivation links.
+4. Policy & Constraint Registry (PCR) — versioned machine-evaluable and interpretation-required 
+controls.
+[Source page 8 of 33]
+5. Governed Execution Gateway (GEG) — controlled egress boundary for consequential external 
+actions.
+6. Audit / Observability / Assurance — append-only event history, decision trace, conformance 
+evidence, and review artifacts.
+EGRESS BOUNDARY. SC3 enforcement is asserted at the controlled egress boundary owned by the 
+deployment. AFGS does not claim atomic or technical control over downstream banks, external APIs, 
+counterparties, or third-party infrastructure outside that boundary.
+4. Unified State Model & State Precedence
+4.1 Canonical State Ownership
+State domain Owner Examples
+Business State AI Founder OS Objective, stage, capital posture, operating 
+decision, KPI, portfolio state.
+AI Runtime State EASGF Source mode, active skills, authorized tools, 
+context, model route, validation state.
+Material Governance State MDGR Triage phase, protected interests, binding 
+findings, verdict, conditions, validity window.
+Shared Governance Events Append-only substrate 
+service
+Policy update, evidence superseded, authority 
+revoked, verdict issued, token consumed, 
+override, appeal.
+4.2 State Precedence Rules
+1. A pillar MAY mutate only state within its jurisdiction.
+2. No pillar MAY overwrite another pillar's authoritative state directly.
+3. Cross-pillar changes occur through registered events and versioned references.
+4. An MDGR verdict MAY constrain effective execution without rewriting historical AI Founder OS 
+records.
+5. An EASGF authorization failure MAY prevent AI/tool activity without changing business intent.
+6. A business cancellation MAY terminate a workflow even when a prior governance verdict was 
+permissive.
+7. Revocation creates a new event/state version; historical decisions remain immutable.
+8. Effective execution is recomputed from current authoritative state, not narrative recency.
+[Source page 9 of 33]
+5. Effective Execution Predicate & Human Approval Semantics
+5.1 Conjunctive Execution Predicate
+Execution_Eligible =
+ Business_Stage_Ready
+AND Runtime_Authorized
+AND Governance_Verdict_Allows
+AND Authority_Valid
+AND Policy_Current
+AND Evidence_Preconditions_Valid
+AND Human_Approval_Valid_If_Required
+AND Execution_Token_Valid
+AND PECG_Passed
+If any mandatory predicate is FALSE or UNRESOLVED, consequential execution MUST be denied, held, or 
+escalated according to policy. DENY, HOLD, and ESCALATE are terminal non-execution outcomes for the 
+current execution attempt: in each case, Execution_Eligible = FALSE. None may transition to real-world 
+execution without a subsequent authorized state transition and a fresh evaluation of the complete 
+Execution_Eligible predicate.
+5.2 Tri-State Human Approval Requirement
+Requirement state Evaluation Normative behavior
+NOT_REQUIRED TRUE Allowed only when PCR/IAR explicitly declare no HITL 
+requirement for the action class and scope.
+REQUIRED + valid approval TRUE Approval must be authenticated, jurisdiction-valid, scope￾matched, current, and not revoked.
+REQUIRED + no valid approval FALSE Execution denied.
+UNRESOLVED FALSE Fail-closed default. Missing or ambiguous configuration is 
+never interpreted as autonomous permission.
+DEFAULT RULE. Absence of a human-approval requirement record is not equivalent to NOT_REQUIRED. The 
+requirement state MUST be resolved explicitly.
+6. Material Decision Gate, DMI & Linked-Decision Aggregation
+6.1 Materiality Responsibility
+Component Role
+AI Founder OS Assigns provisional business materiality from workstream context.
+Materiality Extraction Layer Transforms unstructured requests and context into structured materiality-
+[Source page 10 of 33]
+Component Role
+relevant fields; may be deterministic, model-assisted, or hybrid.
+DMI Evaluates structured fields against deterministic PCR predicates.
+MDGR Performs authoritative governance triage when materiality is triggered or 
+unresolved in a consequential dimension.
+6.2 Extraction–Evaluation Boundary
+UNSTRUCTURED REQUEST / ARTIFACT
+ |
+ v
+MATERIALITY EXTRACTION LAYER (probabilistic / deterministic / hybrid)
+ |
+ v
+STRUCTURED MATERIALITY OBJECT
+ |
+ v
+DMI POLICY EVALUATOR (deterministic predicates)
+ |
+ +----+------+
+ | |
+non-material material / materiality-unknown
+ | |
+normal path v
+ MDGR TRIAGE
+DMI is deterministic only after the relevant inputs are structured. The extraction layer MUST NOT be 
+represented as deterministic unless the implementation demonstrates that property.
+For high-consequence action classes, materiality extraction SHOULD use at least two logically 
+independent extraction signals or mechanisms where technically feasible. Independence MAY be 
+achieved through heterogeneous mechanisms (for example, structured tool metadata plus model-assisted
+extraction, deterministic parser plus model-assisted extraction, or independently configured extractors); it
+does not require two LLMs. Where a deployment does not implement the recommended independent 
+extraction redundancy for a high-consequence action class, the rationale MUST be recorded in the 
+conformance evidence.
+Where independent extraction signals disagree on a consequential field, extraction confidence falls below
+the applicable PCR threshold, or extraction completeness cannot be established, the result MUST become
+MATERIALITY_UNKNOWN and MUST NOT proceed directly to consequential execution.
+6.3 Materiality Unknown Semantics
+▪ Missing critical field affecting a mandatory predicate → MATERIALITY_UNKNOWN.
+▪ Low-confidence or conflicting extraction affecting a consequential predicate → 
+MATERIALITY_UNKNOWN.
+[Source page 11 of 33]
+▪ Materiality extractor disagreement → triage or qualified review according to policy.
+▪ MATERIALITY_UNKNOWN does not automatically mean BLOCK; it prevents silent bypass and routes 
+to triage/HOLD as appropriate.
+6.4 Policy-Defined Linked-Decision Aggregation
+CANONICAL RULE. Materiality SHALL be evaluated over the policy-defined linked-decision scope, not merely
+the current request or transaction instance.
+Aggregate scope may consider objective, counterparty, asset, funding source, authority boundary, 
+transaction family, temporal proximity, dependencies, pending commitments, and cumulative exposure. 
+No universal aggregation window is hard-coded.
+Aggregate_Materiality = f(
+ objective, counterparty, asset, funding_source,
+ authority_boundary, transaction_family,
+ temporal_proximity, dependency_links,
+ pending_commitments, aggregate_exposure )
+7. MDGR Hybrid Trust Boundary
+7.1 Reasoning Plane vs Control Plane
+MDGR REASONING PLANE (probabilistic / model-assisted)
+ |
+ v
+Structured Findings / Proposed Verdict
+ |
+ v
+MDGR CONTROL PLANE
+ +--> machine-evaluable constraint
+ | --> deterministic external validation
+ +--> interpretation-required constraint
+ --> authenticated jurisdiction-valid authority
+ |
+ v
+GOVERNED VERDICT
+MDGR is therefore a hybrid governance runtime. Probabilistic components may discover failures, 
+interpret evidence, and propose structured findings; they MUST NOT independently establish the state, 
+authority, constraint satisfaction, or execution eligibility on which their own verdict depends.
+7.2 Non-Self-Validation Rule
+GS-I12 SUMMARY. Machine-evaluable binding constraints MUST be externally validated through 
+deterministic controls. Interpretation-required constraints MUST be resolved by authenticated, jurisdiction-
+[Source page 12 of 33]
+valid human authority or another explicitly authorized non-self-validating control.
+8. Re-Entry & Normative Temporal Consistency
+8.1 MDGR Re-Entry Triggers
+▪ Policy snapshot changed.
+▪ Authority changed, expired, or was revoked.
+▪ Evidence was superseded, invalidated, or became stale.
+▪ Critical assumption changed.
+▪ Condition precedent failed.
+▪ Decision validity expired.
+▪ Counterparty status materially changed.
+▪ Risk threshold breached.
+▪ Execution scope changed.
+▪ Transaction structure changed.
+▪ Material dependency changed.
+▪ Current state version no longer matches verdict/token binding.
+8.2 Temporal Consistency Rules
+Verdict validity:
+ t_verdict_issued <= t_condition_deadline <= t_verdict_expires
+Execution-token lifecycle:
+ t_verdict_issued <= t_conditions_satisfied <= t_token_issued < t_token_expires
+If condition is satisfied after verdict expiry:
+ REVALIDATION REQUIRED -> renewed/new verdict -> token eligibility
+These relations are normative for examples and conformance fixtures unless a domain-specific policy 
+explicitly defines a stricter valid sequence. All timestamps in these relations are evaluated against the 
+trusted time source defined in §11.7.
+[Source page 13 of 33]
+9. Integration Protocol & Error Semantics
+9.1 Stack Governance Envelope
+{
+ "stack_request_id": "req_20260810_001",
+ "workstream_id": "ws_acq_01",
+ "decision_id": "dec_0099",
+ "state_version": 14,
+ "objective": "Issue binding asset-purchase offer",
+ "requested_action": "issue_binding_commitment",
+ "business_state_ref": "afos://state/ws_acq_01/v14",
+ "runtime_state_ref": "easgf://runtime/session_8821/v7",
+ "governance_state_ref": "mdgr://decision/dec_0099/v2",
+ "materiality": {
+ "provisional_level": "MATERIAL",
+ "extraction_status": "complete",
+ "trigger_basis": ["capital_exposure", "binding_legal_effect"]
+ },
+ "policy_snapshot_ref": "pcr://snapshot/pol_2026_q3.v1",
+ "authority_requirement_refs": ["iar://requirement/capital_committee"],
+ "evidence_refs": ["eps://evidence/valuation_report_v2"],
+ "source_mode": "CLOSED_BOOK",
+ "requested_mdgr_action": "evaluate"
+}
+9.2 MDGR Verdict Contract — Temporally Consistent Example
+{
+ "verdict_id": "vrd_0099_v3",
+ "decision_id": "dec_0099",
+ "state_version": 15,
+ "outcome": "PERMIT_WITH_CONDITIONS",
+ "issued_at": "2026-08-10T08:30:00+07:00",
+ "valid_from": "2026-08-10T08:30:00+07:00",
+ "expires_at": "2026-08-10T18:00:00+07:00",
+ "conditions": [{
+ "condition_id": "cond_escrow",
+ "required_evidence_ref": "eps://evidence/escrow_signed",
+ "owner": "legal_counsel",
+ "deadline": "2026-08-10T16:00:00+07:00",
+ "status": "PENDING"
+ }],
+ "execution_token_eligible": false,
+ "next_action": "SATISFY_CONDITIONS_AND_REVALIDATE"
+}
+9.3 Error & Timeout Envelope
+{
+ "error_id": "err_20260810_007",
+ "request_id": "req_20260810_001",
+ "timestamp": "2026-08-10T08:31:05+07:00",
+ "error_class": "SUBSTRATE_TIMEOUT",
+[Source page 14 of 33]
+ "component": "IAR",
+ "retryable": true,
+ "state_mutation_committed": false,
+ "execution_allowed": false,
+ "fallback_mode": "ADVISORY_READ_ONLY",
+ "next_action": "RETRY_OR_HOLD",
+ "audit_event_required": true
+}
+Malformed requests, unresolved required fields, timeouts, and partial failures MUST produce explicit 
+structured failure semantics. Silence, null output, or model guessing MUST NOT be treated as successful 
+authorization.
+10. Core Registries, LKG Snapshots & Material Policy Mutation
+10.1 Identity & Authority Registry (IAR)
+IAR is the canonical source for identity status, roles, delegated authority, signing/transaction limits, 
+separation of duties, temporary delegation, vetoes, conflicts of interest, and expiry. Authority claims from 
+conversational text are non-authoritative until resolved against IAR or an approved equivalent source.
+10.2 Evidence & Provenance Service (EPS)
+EVIDENCE DISTINCTION. Source Authorization ≠ Source Authenticity ≠ Source Authority ≠ Source Freshness 
+≠ Substantive Truth.
+10.3 Policy & Constraint Registry (PCR)
+PCR MUST distinguish at least MANDATORY, CONDITIONAL, ADVISORY, and NON_DEROGABLE constraints 
+and identify whether each constraint is machine-evaluable or requires authorized human interpretation.
+10.4 Pinned Last-Known-Good Snapshot
+▪ LKG snapshots MUST be signed/pinned, versioned, and associated with an explicit TTL.
+▪ LKG use is prohibited after TTL expiry.
+▪ LKG MUST NOT override a known revocation or newer blocking event.
+▪ Authority classes requiring live verification MUST NOT fall back to LKG unless policy explicitly permits 
+it.
+▪ Every degraded-mode use of LKG MUST emit an audit event.
+▪ LKG use MAY support bounded read/advisory or policy-defined continuity; it MUST NOT silently 
+expand execution authority.
+[Source page 15 of 33]
+Each signed LKG snapshot MUST identify its signing authority or approved configuration/policy authority, 
+signature or integrity mechanism, trust-anchor reference, issuance time, version, and TTL.
+Verification of an LKG snapshot MUST terminate in a trusted key, certificate, attestation root, or 
+equivalent trust anchor maintained outside transient model context. The consuming model or 
+probabilistic reasoning component MUST NOT create, replace, or self-assert the trust anchor used to 
+validate the snapshot.
+If the applicable trust anchor cannot be resolved or validated, the LKG snapshot MUST be treated as 
+untrusted and MUST NOT restore material decision or consequential execution eligibility.
+10.5 Material Policy Mutation Governance
+MATERIAL POLICY MUTATION RULE. Changes to constraint derogability, NON_DEROGABLE classification, 
+materiality thresholds, authority thresholds, or other controls that can materially weaken the governance 
+perimeter MUST themselves be treated as material governance actions. Such changes require jurisdiction￾valid authority, auditable approval, and the policy-defined separation-of-duties or dual-authorization 
+controls applicable to their risk class.
+Downgrading or removing a NON_DEROGABLE constraint requires an explicitly authorized meta￾governance process and MUST NOT be achievable solely through ordinary PCR editing rights.
+A mutation governed by this section is a policy-layer material action: it MUST route through MDGR triage 
+plus jurisdiction-valid human authority, MUST emit a governance event, and MUST trigger re-entry 
+evaluation for affected active verdicts and tokens under §8.1. This section governs PCR content mutation; 
+it is distinct from, and additional to, the specification change-control procedure in §19, which governs the 
+AFGS text itself.
+11. Governed Execution Gateway, PECG/PESR & Revocation
+11.1 Controlled Egress Enforcement Boundary
+GEG is the deployment-controlled egress boundary through which consequential external mutations 
+MUST pass when SC3 behavior is claimed. The gateway cannot guarantee atomicity inside third-party 
+systems; it governs the pre-egress decision and the execution attempt within the deployment's control 
+boundary.
+11.2 PECG Composition
+PECG — Pre-Execution Consistency Guard
+ +-- PESR: current state / policy / authority / condition revalidation
+ +-- execution lease or short-lived reservation
+ +-- revocation check: push buffer + authoritative pull
+[Source page 16 of 33]
+ +-- idempotency-key enforcement
+ +-- replay prevention / single-use nonce
+ +-- scope match
+ +-- human approval check if REQUIRED
+ +-- compensation / reconciliation semantics
+ |
+ +-- PASS -> controlled egress attempt
+ +-- FAIL -> DENY / HOLD / ESCALATE
+11.3 Distributed Execution Semantics
+NO ABSOLUTE CROSS-SYSTEM ATOMICITY CLAIM. AFGS requires the strongest available consistency 
+boundary using state-version checks, short-lived leases/reservations, idempotency keys, replay prevention, 
+and explicit compensation/reconciliation where external atomicity cannot be guaranteed.
+11.4 Execution Token Contract
+{
+ "execution_token_id": "tok_0099_01",
+ "decision_id": "dec_0099",
+ "verdict_id": "vrd_0099_v3",
+ "authorized_actor_ref": "iar://actor/executor_01",
+ "authorized_action": "wire_transfer",
+ "approved_scope": "IDR 5,000,000,000 to escrow account A",
+ "state_version": 16,
+ "policy_snapshot_ref": "pcr://snapshot/pol_2026_q3.v1",
+ "authority_snapshot_ref": "iar://snapshot/auth_20260810_0835",
+ "issued_at": "2026-08-10T16:30:00+07:00",
+ "expires_at": "2026-08-10T16:35:00+07:00",
+ "single_use_nonce": "nonce_0099_a1",
+ "idempotency_key": "idem_dec0099_attempt01",
+ "status": "VALID"
+}
+11.5 Revocation Propagation Contract & SLO
+revocation_policy:
+ propagation_slo_ms: <deployment-configured>
+ maximum_staleness_ms: <deployment-configured>
+ acknowledgement_required: true
+ fail_closed_after_ms: <deployment-configured>
+ push_channel: event_stream
+ pull_check: authoritative_pesr
+No universal revocation latency is hard-coded. Deployments MUST publish and test their configured 
+propagation SLO, maximum staleness, acknowledgement behavior, and fail-closed threshold.
+11.6 PESR Authoritative Read Consistency
+AUTHORITATIVE READ RULE. PESR state and revocation checks MUST be served by the authoritative system 
+of record or by a replica whose maximum observed lag is bounded within the configured 
+[Source page 17 of 33]
+maximum_staleness_ms. If that freshness bound cannot be established, execution MUST fail closed.
+This rule closes the window between revocation commit and revocation visibility at the enforcement 
+point: the push buffer of §11.5 is defense-in-depth, and the authoritative pull is the safety-bearing check. 
+An implementation whose PESR reads an unbounded-lag replica does not satisfy GS-I7.
+11.7 Trusted Time & Freshness Authority
+TRUSTED TIME RULE. Expiry, TTL, freshness, and validity-window decisions at PECG/PESR and LKG 
+verification MUST use a trusted and synchronized time source. If time integrity cannot be established, 
+consequential execution MUST fail closed.
+This rule applies to execution-token TTL (§11.4), verdict validity windows (§8.2, §9.2), LKG TTL (§10.4), 
+break-glass TTL (§12.2), and revocation staleness bounds (§11.5). The time source is part of the assurance 
+surface: its identity, synchronization mechanism, and failure behavior MUST be documented in the 
+deployment's conformance evidence. GS-I7 freshness guarantees are only as strong as the clock against 
+which they are evaluated.
+12. Human Governance, Override & Break-Glass
+12.1 Override Classes
+Class Use Minimum controls
+Discretionary Override Policy explicitly delegates judgment
+to a human authority.
+Authenticated actor; valid jurisdiction; 
+scoped decision; justification; new 
+governance transition.
+Policy Exception / 
+Break-Glass
+Defined emergency exception 
+pathway.
+Risk-tier approvals; time-bounded scope; 
+explicit justification; least privilege; expiry; 
+retrospective review.
+Non-Derogable BLOCK Violation of non-derogable 
+legal/protected-interest constraint.
+No ordinary override or break-glass path.
+12.2 Risk-Tiered Break-Glass
+Risk tier Approval rule Additional controls
+Low/operational 1 named authority where policy 
+permits
+Short TTL; audit event; scoped action.
+Material 2 independent approvers / four￾eyes REQUIRED by default
+Separation of duties; narrow scope; 
+mandatory retrospective review. A single-
+[Source page 18 of 33]
+Risk tier Approval rule Additional controls
+authority exception is permitted only when 
+explicitly defined in PCR, scope-limited, 
+time-limited, and auditable.
+Existential / highest 
+tier
+Multi-sig / veto clearance per PCR Shortest practical TTL; rate limit; 
+independent retrospective review; no non￾derogable override.
+Material-tier break-glass defaults to independent dual authorization. Absence of an explicit PCR exception
+MUST NOT be interpreted as permission for single-authority break-glass. Any permitted exception MUST 
+identify its authority basis, scope, validity window, and audit requirements.
+12.3 Human Override Contract
+{
+ "override_id": "ovr_0099_01",
+ "decision_id": "dec_0099",
+ "prior_verdict_id": "vrd_0099_v3",
+ "override_class": "POLICY_EXCEPTION",
+ "actor_refs": ["iar://actor/board_member_01", "iar://actor/risk_officer_02"],
+ "authority_refs": ["iar://authority/break_glass_material"],
+ "justification_ref": "eps://evidence/override_memo_0099",
+ "scope": "specific_action_only",
+ "effective_from": "2026-08-10T17:00:00+07:00",
+ "expires_at": "2026-08-10T17:30:00+07:00",
+ "retrospective_review_required": true,
+ "retrospective_review_ref": null,
+ "status": "AUTHORIZED",
+ "new_verdict_required": true
+}
+A human override MUST NOT edit the original verdict in place. It creates a new auditable governance 
+transition and, where execution becomes permissible, requires a new current execution token.
+13. Shared Event Model & Auditability
+{
+ "event_id": "evt_0099_revocation_01",
+ "timestamp": "2026-08-10T16:32:10+07:00",
+ "workstream_id": "ws_acq_01",
+ "decision_id": "dec_0099",
+ "event_type": "EXECUTION_TOKEN_REVOKED",
+ "actor_ref": "iar://actor/risk_officer_02",
+ "origin_system": "mdgr-control-plane",
+ "previous_state_ref": "sub://state/v16",
+ "new_state_ref": "sub://state/v17",
+ "trigger_ref": "evt_counterparty_alert_01",
+ "policy_snapshot_ref": "pcr://snapshot/pol_2026_q3.v1",
+ "reason_code": "COUNTERPARTY_DEFAULT_ALERT"
+}
+[Source page 19 of 33]
+Material state mutation MUST be reconstructable from append-only or tamper-evident events. Historical 
+decisions are immutable; effective state is derived from current authoritative references and event 
+history. Canonical event types include:
+▪ BUSINESS_STAGE_CHANGED · RISK_LEVEL_CHANGED
+▪ EVIDENCE_ADDED / EVIDENCE_SUPERSEDED · POLICY_UPDATED · AUTHORITY_REVOKED
+▪ MDGR_INVOKED · VERDICT_ISSUED / VERDICT_REVOKED · CONDITION_SATISFIED
+▪ EXECUTION_TOKEN_ISSUED / REVOKED / CONSUMED · EXECUTION_DENIED / COMPLETED
+▪ HUMAN_OVERRIDE · APPEAL_OPENED · DEGRADED_MODE_ENTERED / EXITED · 
+LKG_SNAPSHOT_USED
+14. Substrate Failure & Degraded-Mode Policy
+SAFETY / LIVENESS RULE. Consequential state transition and external execution fail closed when mandatory
+governance dependencies are unavailable. Advisory, read-only, or non-material analytical work MAY degrade
+safely when policy permits and the degraded state is explicit and auditable.
+Failure Advisory / analytical work Material decision Consequential execution
+IAR unavailable May continue as non￾authoritative advisory; LKG 
+only if permitted.
+HOLD unless valid 
+permitted LKG resolves 
+requirement.
+DENY when live authority
+verification is required.
+PCR unavailable Pinned valid policy 
+snapshot may support 
+bounded analysis.
+HOLD or revalidate per 
+TTL/policy.
+DENY if applicable policy 
+cannot be established.
+EPS unavailable Existing verified references 
+may remain readable if 
+available.
+HOLD when required 
+evidence cannot be 
+verified.
+DENY where 
+evidence/precondition is 
+execution-critical.
+Event Service 
+unavailable
+Read-only analysis may 
+continue.
+No authoritative material 
+state mutation unless a 
+defined resilient event path 
+exists.
+DENY consequential 
+execution when 
+audit/state durability 
+cannot be established.
+MDGR 
+unavailable
+Non-material path may 
+continue.
+HOLD. DENY material execution.
+Validator 
+unavailable
+Tier-dependent self-check 
+only for non-material work.
+HOLD when independent 
+validation is mandatory.
+DENY if validation is an 
+execution predicate.
+[Source page 20 of 33]
+GEG unavailable Analysis may continue. Decision may remain 
+recorded but non￾executable.
+DENY / no controlled 
+egress.
+Time source 
+unavailable
+Analysis may continue with 
+explicit degraded flag.
+HOLD when validity￾window evaluation is 
+required.
+DENY consequential 
+execution when 
+expiry/freshness cannot 
+be established (§11.7).
+14.1 Governance Denial-of-Service Controls
+▪ Bounded retry and timeout policies.
+▪ Explicit degraded-mode state rather than hidden fallback.
+▪ Pinned LKG snapshots within TTL where policy permits.
+▪ Separate read/advisory continuity from write/execution authority.
+▪ Escalation paths for prolonged outage.
+▪ Audit of every degraded-mode entry, LKG use, override, and recovery.
+15. Cross-Pillar Hard Invariants GS-I1–GS-I12
+Invariant Normative rule
+GS-I1 — Authority Non-Creation No model, skill, router, or pillar may create organizational authority.
+GS-I2 — State Jurisdiction Each pillar may mutate only the state it owns.
+GS-I3 — No Execution by 
+Analysis
+Analytical correctness or persuasive reasoning does not imply execution 
+permission.
+GS-I4 — No Material Decision 
+Bypass
+Mandatory MDGR triggers cannot be downgraded by ordinary 
+generative reasoning.
+GS-I5 — Evidence by Reference Material claims remain provenance-linked across handoffs.
+GS-I6 — No Silent Condition Loss PERMIT-C binding conditions survive every downstream handoff and 
+token-binding step.
+GS-I7 — Execution Freshness & 
+Consistency
+Execution is denied for expired, revoked, replayed, scope-mismatched, 
+or state/policy/authority-stale permission; PECG must revalidate before 
+controlled egress, served per §11.6 and evaluated against trusted time 
+per §11.7.
+GS-I8 — Human Authority 
+Preservation & Governed 
+Override
+AI cannot substitute for legally/organizationally required human 
+authority; human overrides require authenticated, jurisdiction-valid, 
+auditable governance transitions; non-derogable constraints remain 
+[Source page 21 of 33]
+Invariant Normative rule
+non-overridable.
+GS-I9 — Honest Conformance / 
+Claim Discipline
+A deployment cannot claim enforcement stronger than its actual 
+substrate and test evidence.
+GS-I10 — Immutable Decision 
+History
+Revalidation, appeal, revocation, and override create new state 
+transitions rather than rewriting prior records.
+GS-I11 — Independent 
+Materiality Interception
+Mandatory material-decision triggers cannot depend solely on AI 
+Founder OS classification or model self-assessment.
+GS-I12 — No Self-Sufficient 
+Governance Authority
+No probabilistic reasoning component may independently establish the 
+binding state, authority, constraint satisfaction, or execution eligibility on
+which its own verdict depends. Machine-evaluable binding constraints 
+require deterministic external validation; interpretation-required 
+constraints require authenticated, jurisdiction-valid human authority or 
+another explicitly authorized non-self-validating control.
+16. Threat Model & Traceability Matrix
+Threat Invariant(s) Primary control boundary Verification metric / 
+hook
+T01 Material-Gate Miss GS-I4, GS-I11 Extraction layer + DMI + materiality￾unknown routing
+Material Gate Recall;
+miss analysis
+T02 Material-Gate 
+Overreach
+GS-I11 MDGR triage de-escalation + 
+precision testing
+Material Gate 
+Precision; 
+unnecessary 
+escalation rate
+T03 State Divergence GS-I2, GS-I10 Versioned state + event sourcing + 
+PECG/PESR
+State mismatch 
+incidents; 
+divergence detection
+latency
+T04 Authority Spoofing GS-I1, GS-I8 IAR validation; authenticated 
+authority references
+Authority-spoof 
+detection; 
+unauthorized 
+execution attempts 
+rejected
+T05 Evidence Semantic 
+Drift
+GS-I5 EPS canonical semantics; 
+provenance/version checks
+Evidence binding 
+accuracy; 
+stale/superseded 
+[Source page 22 of 33]
+Threat Invariant(s) Primary control boundary Verification metric / 
+hook
+evidence detection
+T06 Condition Stripping GS-I6 Verdict/token binding; downstream 
+schema validation
+Condition 
+persistence rate
+T07 Phase Laundering GS-I3, GS-I9, 
+GS-I12
+MDGR control-plane phase validation Illegal phase￾transition rejection
+T08 Execution Bypass GS-I3, GS-I7, 
+GS-I9
+GEG controlled egress; least privilege Bypass attempts; 
+ungoverned 
+execution count
+T09 TOCTOU Drift GS-I7 PECG + PESR + lease/reservation + 
+revocation checks + trusted time 
+(§11.7)
+Stale-state execution
+rejection; 
+revalidation latency
+T10 Token Replay GS-I7 Single-use nonce + idempotency + 
+token status
+Replay rejection rate
+T11 Cross-Project 
+Leakage
+GS-I2, GS-I5 Workstream isolation; scoped 
+references; EASGF source policy
+Cross-project 
+leakage incidents
+T12 Direct Rule / Prompt 
+Injection
+GS-I2, GS-I9 External state/policy precedence; 
+context sanitization
+Governance-state 
+mutation attempts 
+blocked
+T13 Policy Capture / 
+Staleness
+GS-I9, GS-I10 PCR provenance; versioning; expiry; 
+appeal; LKG constraints; material 
+policy mutation gate (§10.5)
+Policy-drift incidents;
+time to revalidation
+T14 Validator Circularity GS-I12 Reasoning/control-plane separation; 
+independent deterministic/human 
+control
+Validator￾independence 
+compliance
+T15 Ceremonial Human 
+Rubber Stamp
+GS-I8 Risk-tier HITL; SoD; rationale and 
+review requirements
+Approval quality 
+review; 
+override/approval 
+anomaly rate
+16.1 Scope-Splitting / Slicing as Cross-Cutting Attack
+Scope-splitting is treated as a cross-cutting variant of Material-Gate Miss and Execution Bypass. Linked￾decision aggregation MUST detect cumulative exposure over policy-defined relationships, not merely 
+single transactions or fixed time windows.
+[Source page 23 of 33]
+17. Stack Conformance Criteria SC0–SC3
+17.1 Conformance vs Certification
+Term Definition
+Conformance Technical property measured against the AFGS specification and test profile.
+Certification Independent attestation process performed by an authorized assessment party, if 
+such a scheme is later established.
+AFGS v1.0 defines conformance criteria. It does not establish a certification authority or certification 
+scheme.
+17.2 Conformance Ladder
+Level Minimum substrate Required evidence for conformance Defensible claim
+SC0 Architecture / 
+specification 
+artifacts
+Named components, jurisdictions, invariants,
+contracts, and declared implementation 
+boundaries.
+Governance architecture 
+documented.
+SC1 Prompt / in-context 
+orchestration
+Behavioral tests for routing, source 
+discipline, output form, escalation, and 
+claimed limitations; failures recorded.
+Best-effort behavioral 
+compliance only.
+SC2 External registries + 
+validators
+External IAR/EPS/PCR or equivalents; 
+schema/constraint validation; rejection of 
+unresolved authority/evidence/state 
+references; independent validation evidence.
+Invalid or unbound 
+governance artifacts can be 
+externally rejected.
+SC3 External state 
+machine + 
+controlled egress / 
+GEG
+Externally enforced legal transitions; 
+PECG/PESR; token checks; revocation; replay 
+prevention; bypass testing; consequential 
+mutation cannot reach controlled egress 
+without current authorization.
+Invalid state, phase, 
+authority, or token cannot 
+pass the deployment￾controlled execution 
+boundary.
+17.3 Conformance Rule
+HONEST CONFORMANCE. A deployment MAY claim only the highest level for which every required control 
+is actually implemented and supported by conformance evidence. Passing a prompt-level test does not 
+establish SC2 or SC3.
+[Source page 24 of 33]
+18. Assurance, Metrics & Proposed Acceptance Criteria
+Metrics in this section are verification targets or proposed acceptance criteria for a defined test harness. 
+They are not claims of real-world performance until measured on a specified implementation and dataset.
+Metric What it tests Verification position
+Material Gate Recall Mandatory material cases 
+reaching MDGR
+Proposed benchmark threshold ≥99.9% for the
+defined benchmark suite; dataset and 
+confidence interval MUST be reported.
+Material Gate Precision Unnecessary material 
+escalations
+Benchmark-specific target; required to prevent
+governance DoS.
+Unauthorized Execution Execution without valid 
+authority
+Required conformance-suite outcome: 0 
+observed unauthorized executions; not a 
+universal 0% guarantee.
+State Mismatch Execution attempted under 
+divergent state
+Required harness outcome: 0 successful stale￾state executions.
+Condition Persistence PERMIT-C conditions preserved 
+downstream
+Required harness outcome: all binding 
+conditions preserved in tested paths.
+Revocation Propagation 
+Latency
+Revocation event to GEG 
+awareness
+Report p50/p95/p99 against deployment￾configured SLO.
+Maximum Revocation 
+Staleness
+Longest accepted stale 
+revocation state
+MUST remain below configured maximum 
+staleness threshold.
+Replay Rejection Repeated execution-token use Required harness outcome: all defined replay 
+attempts rejected.
+Override Integrity Unauthorized/unauthenticated 
+override attempts
+Required harness outcome: 0 accepted 
+unauthorized overrides.
+Human Review Burden Human governance workload Measured; no universal target.
+Governance Latency / 
+Cost
+Additional time and compute Measured by tier and use case; no universal 
+target.
+Decision Utility / False 
+Block
+Value lost through over￾governance
+Must be measured so safety is not achieved 
+merely by blocking everything.
+
+[Source page 25 of 33]
+19.3 Controlled Amendment Flow
+Change Request -> Impact Classification -> Architecture / Security /
+Governance Review -> Schema & Test Impact -> Red-Team / Regression Update
+-> Approval Record -> Versioned Release -> Migration / Deprecation Notice
+where required
+Frozen does not mean immutable forever. It means changes are explicit, versioned, reviewable, and 
+cannot be introduced ad hoc into production implementations.
+
+[Source page 27 of 33]
+20.4 Known-Limitations Register
+The following limitations are consciously accepted in AFGS v1.0. They are not silent gaps and MUST NOT 
+be interpreted as permission to weaken other controls or claim a higher conformance level.
+
+[Selected limitation and consequence passages]
+KL-R5 Normative executable 
+Conformance Test Profile not
+yet completed.
+SC0–SC3 criteria exist, but third 
+parties cannot yet execute a 
+canonical AFGS fixture suite. No 
+SC2/SC3 conformance is 
+demonstrated by this document 
+alone.
+
+KL-R6 No universal data￾classification or tenancy 
+taxonomy is standardized by 
+AFGS v1.0.
+T11 cross-project leakage controls 
+depend on implementation-specific 
+organizational data governance, 
+tenancy, confidentiality, and source￾boundary policy.
+
+[Implementation requirement for KL-R6]
+Implementations MUST 
+bind AFGS isolation 
+controls to an approved 
+organizational taxonomy.
+
+[Source page 28 of 33]
+21. Post-Freeze Implementation Roadmap
+1. Materiality Policy & Canonical State Machine — production-grade policy objects, legal transitions, 
+linked-decision scope, and state invariants.
+2. Formal JSON Schema / Protobuf Contracts — machine-validated Stack Envelope, Verdict, Token, 
+IAR/EPS/PCR objects, Override, Revocation, and Error Envelopes.
+3. SC2 Reference Implementation — external validator middleware, registries, and state engine.
+4. Conformance Test Suite & Adversarial Benchmark — ground-truth fixtures, scope-splitting, authority 
+spoofing, stale policy/evidence, revocation, bypass, and validator-circularity tests (closes KL-R5).
+5. SC3 Enforcement Implementation — GEG, PECG/PESR, token/revocation services, controlled egress, 
+resilience, idempotency, reconciliation, and trusted-time infrastructure per §11.7.
+6. Empirical Evaluation — measured false allow/block, materiality precision/recall, latency, cost, human
+burden, and utility loss.
+7. External Validation / Independent Certification, if established — separate assurance milestone; not 
+implied by conformance alone.
+
+[Source page 29 of 33]
+Appendix A. Canonical Contract Schemas
+A.1 Minimum Contract Set
+Contract Minimum purpose
+Stack Governance Envelope Cross-pillar request, scoped state refs, materiality state, 
+policy/authority/evidence refs.
+MDGR Verdict Bounded outcome, state version, policy snapshot, authority refs, findings, 
+conditions, validity, re-entry triggers.
+Execution Token Actor, action, scope, state/policy/authority bindings, issue/expiry, nonce, 
+idempotency key, status.
+Human Override Event Override class, actors, authority, justification, scope, validity, review 
+requirements, new-verdict requirement.
+Revocation Event Token/verdict/decision refs, revocation reason, authority, timestamp, state 
+version, acknowledgement state.
+Error & Timeout Envelope Failure class, component, retryability, mutation state, execution allowance, 
+fallback mode, next action.
+IAR Object Identity, roles, delegated authority, SoD, conflicts, expiry, vetoes.
+EPS Object Evidence ID, source, issuer, hash, version, effective/retrieval dates, 
+authority/freshness/verification, derivation.
+PCR Object Constraint ID, issuer, authority, jurisdiction, version, effective window, type, 
+priority, evaluation mode.
+Shared Event Event type, origin, actor, prior/new state refs, triggers, policy/authority refs, 
+reason code.
+A.2 Canonical URI Schemes
+Scheme Use
+afos:// AI Founder OS business and operating-state references.
+easgf:// EASGF runtime, capability, routing, and validation references.
+mdgr:// MDGR decision, verdict, finding, and governance-state references.
+iar:// Identity and authority references.
+eps:// Evidence and provenance references.
+pcr:// Policy and constraint references.
+sub:// Shared substrate state/event/internal service references.

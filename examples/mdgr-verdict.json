@@ -1,0 +1,20 @@
+{
+  "verdict_id": "vrd_0099_v3",
+  "decision_id": "dec_0099",
+  "state_version": 15,
+  "outcome": "PERMIT_WITH_CONDITIONS",
+  "issued_at": "2026-08-10T08:30:00+07:00",
+  "valid_from": "2026-08-10T08:30:00+07:00",
+  "expires_at": "2026-08-10T18:00:00+07:00",
+  "conditions": [
+    {
+      "condition_id": "cond_escrow",
+      "required_evidence_ref": "eps://evidence/escrow_signed",
+      "owner": "legal_counsel",
+      "deadline": "2026-08-10T16:00:00+07:00",
+      "status": "PENDING"
+    }
+  ],
+  "execution_token_eligible": false,
+  "next_action": "SATISFY_CONDITIONS_AND_REVALIDATE"
+}
