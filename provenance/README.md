@@ -39,4 +39,4 @@ Companion tables normalize layout for readability. The six JSON examples preserv
 
 Checksums identify file bytes; they do not authenticate source assertions, grant authority, establish peer review, or demonstrate SC1/SC2/SC3 conformance. See [conformance](../specification/conformance.md) and [limitations](../research/limitations.md).
 
-The [paper](../paper/README.md) retains its original license. Source excerpts, examples and companion documentation receive no additional license grant; see [LICENSE.md](../LICENSE.md).
+The [paper](../paper/README.md) and the source excerpts are licensed under CC BY-ND 4.0. Examples and companion documentation are licensed under CC BY 4.0; see [LICENSING.md](../LICENSING.md).

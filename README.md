@@ -79,4 +79,4 @@ Report contradictions, ambiguous interfaces, unsupported claims or concrete coun
 
 Cite the paper using [CITATION.cff](CITATION.cff) or [CITATION.bib](CITATION.bib).
 
-The paper retains **CC BY-ND 4.0**. **No separate license grant is made for the source excerpts, examples or companion documentation.** This is not a repository-wide open-source or modifiable-specification license. Existing license rights, applicable exceptions and GitHub platform rights remain unaffected. See [LICENSE.md](LICENSE.md).
+The paper and the source excerpts are licensed under **CC BY-ND 4.0**. Companion documentation and examples are licensed under **[CC BY 4.0](LICENSE)**. Adapted versions must not be presented as the official AFGS v1.0 baseline. See [LICENSING.md](LICENSING.md) for per-artifact scope.

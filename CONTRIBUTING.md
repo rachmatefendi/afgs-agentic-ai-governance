@@ -29,6 +29,6 @@ Label tests as proposed or executed. Executed results need an identifiable imple
 
 ## Rights and sensitive material
 
-Read [LICENSE.md](LICENSE.md) before reproducing or redistributing source text. The paper retains CC BY-ND 4.0; the source excerpts, examples and companion documentation have no separate license grant from this repository. This guide does not authorize distribution of adapted source material. Prefer review commentary and clearly separate proposals written in your own words; any quotation or adaptation must rely on applicable rights or exceptions. Do not submit credentials, customer records, private corporate approvals or material you lack permission to share.
+Read [LICENSING.md](LICENSING.md) before reproducing or redistributing source text. The paper and source excerpts are licensed under CC BY-ND 4.0 (no public sharing of adaptations); companion documentation and examples are licensed under CC BY 4.0. By submitting a contribution to companion material, you agree that it may be distributed under CC BY 4.0. Prefer review commentary and clearly separate proposals written in your own words. Do not submit credentials, customer records, private corporate approvals or material you lack permission to share.
 
 The specification owner identified by the source is Rachmat Efendi. A pull request, reviewer comment or AI recommendation does not exercise that owner's approval authority.

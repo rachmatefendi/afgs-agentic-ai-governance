@@ -75,7 +75,7 @@
     ],
     "layout_transform": "running page headers removed; source page labels retained; line wrapping and flattened tables otherwise retained",
     "authority": "non-normative reference",
-    "license_grant": "none additional"
+    "license": "CC-BY-ND-4.0"
   },
   "companion_documents": {
     "authority": "non-normative source-derived references",
@@ -88,7 +88,7 @@
       "PECG",
       "PESR"
     ],
-    "license_grant": "none additional"
+    "license": "CC-BY-4.0"
   },
   "illustrative_json_examples": [
     {
